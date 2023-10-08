@@ -10,11 +10,10 @@ import android.widget.EditText
 import android.widget.TextView
 import kotlin.math.log
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class  RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var etEmail:EditText
     private lateinit var etPassword:EditText
-    private lateinit var etConfirmPassword:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +21,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword )
-        etConfirmPassword = findViewById(R.id.etConfirmPassword )
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
         btnRegister.setOnClickListener(this)
@@ -33,17 +31,19 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when(v.id) {
             R.id.btnRegister -> {
-
-                val email = etEmail.text.toString()
-                val password = etPassword.text.toString()
-
+                val user = User(etEmail.text.toString(), etPassword.text.toString())
                 val switchPage = Intent(this@RegisterActivity, MainActivity::class.java)
-                switchPage.putExtra("email",email)
-                switchPage.putExtra("password",password)
+                switchPage.putExtra("email",user)
                 startActivity(switchPage)
             }
             R.id.tvLoginOption -> {
+
+                val bundle = Bundle()
+                bundle.putString("email",etEmail.text.toString())
+                bundle.putString("password",etPassword.text.toString())
+
                 val switchPage = Intent(this@RegisterActivity, LoginActivity::class.java)
+                switchPage.putExtras(bundle)
                 startActivity(switchPage)
             }
         }
