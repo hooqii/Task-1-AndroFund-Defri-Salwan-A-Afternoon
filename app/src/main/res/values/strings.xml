@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ZenV</string>
+    <string name="your_password">Your password</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="input_your_email_here">Input your email here</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_your_password">Create your password</string>
+    <string name="confirm_the_password">Confirm the password</string>
+</resources>
